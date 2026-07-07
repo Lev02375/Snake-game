@@ -25,8 +25,18 @@ jobs:
       with:
         packages: 'platforms;android-30 build-tools;30.0.3'
 
+    - name: Verify Android SDK
+      run: |
+        echo "ANDROID_HOME: $ANDROID_HOME"
+        ls -la $ANDROID_HOME/build-tools/ || echo "build-tools folder not found"
+        ls -la $ANDROID_HOME/build-tools/30.0.3/ || echo "build-tools 30.0.3 not found"
+        which aidl || echo "aidl not in PATH"
+
     - name: Accept Android licenses
       run: yes | $ANDROID_HOME/tools/bin/sdkmanager --licenses || true
+
+    - name: Remove buildozer cache
+      run: rm -rf ~/.buildozer
 
     - name: Install Python dependencies
       run: |
