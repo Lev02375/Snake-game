@@ -20,7 +20,7 @@ jobs:
         pip install buildozer cython pygame
     - name: Build APK
       run: |
-        buildozer android debug --no-deploy
+        buildozer android debug --no-deploy --accept-licenses
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
