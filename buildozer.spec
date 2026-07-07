@@ -1,6 +1,6 @@
 [app]
 
-title = Snake Game
+title = SnakeGame
 package.name = snakegame
 package.domain = org.openclaude
 
