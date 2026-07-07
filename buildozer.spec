@@ -5,7 +5,7 @@ package.domain = org.lev02375
 source.dir = .
 version = 1.0.0
 
-requirements = python3,pygame
+requirements = python3,pygame,Ailb
 
 android.permissions = INTERNET
 android.api = 30
