@@ -2,6 +2,8 @@
 title = SnakeGame
 package.name = snakegame
 package.domain = org.lev02375
+source.dir = .
+version = 1.0.0
 
 requirements = python3,pygame
 
