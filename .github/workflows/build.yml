@@ -18,4 +18,11 @@ jobs:
         sudo apt update
         sudo apt install -y zlib1g-dev libffi-dev libssl-dev
         pip install buildozer cython pygame
-
+    - name: Build APK
+      run: |
+        buildozer android debug --no-deploy
+    - name: Upload APK
+      uses: actions/upload-artifact@v4
+      with:
+        name: snake-game
+        path: bin/*.apk
