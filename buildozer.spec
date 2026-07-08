@@ -17,3 +17,4 @@ android.build_tools = 30.0.3
 [buildozer]
 log_level = 2
 warn_on_root = 1
+android.sdk_path = /home/runner/android-sdk
