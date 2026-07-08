@@ -9,18 +9,36 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
         python-version: '3.10'
-    - name: Install dependencies
+
+    - name: Install system dependencies
       run: |
         sudo apt update
         sudo apt install -y zlib1g-dev libffi-dev libssl-dev
+
+    - name: Set up Android SDK
+      uses: android-actions/setup-android@v3
+      with:
+        packages: 'platforms;android-30 build-tools;30.0.3'
+
+    - name: Accept Android licenses
+      run: yes | $ANDROID_HOME/tools/bin/sdkmanager --licenses || true
+
+    - name: Install Python dependencies
+      run: |
+        pip install --upgrade pip
         pip install buildozer cython pygame
+
     - name: Build APK
       run: |
+        export ANDROID_HOME=$ANDROID_HOME
+        export PATH=$ANDROID_HOME/build-tools/30.0.3:$PATH
         buildozer android debug --no-deploy
+
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
